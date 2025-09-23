@@ -1,0 +1,22 @@
+:root{
+	--bg:#0b1220;
+	--panel:#121a2b;
+	--panel-2:#0e1626;
+	--text:#e6eefc;
+	--muted:#9bb0d1;
+	--accent:#3aa0ff;
+	--warn:#f6c23e;
+	--crit:#e74c3c;
+	--ok:#18b06b;
+}
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+	margin:0;
+	font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+	background:
+		linear-gradient(rgba(5,8,15,.85), rgba(5,8,15,.85)),
+		url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1920&q=80') no-repeat center / cover fixed;
+	color:var(--text);
+}
+a{color:var(--accent)}

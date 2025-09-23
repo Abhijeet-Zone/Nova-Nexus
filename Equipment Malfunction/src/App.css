@@ -1,0 +1,33 @@
+.app-container{display:flex;flex-direction:column;min-height:100%}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--panel);border-bottom:1px solid #1b2740}
+.app-header h1{margin:0;font-size:20px}
+.header-right{display:flex;gap:12px;align-items:center}
+.toggle{display:flex;gap:8px;align-items:center}
+.alert-indicator{position:relative;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#0b1424;border:1px solid #1b2740;cursor:pointer}
+.bell{font-size:18px;line-height:1}
+.badge{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;color:white}
+.badge.critical{background:var(--crit)}
+.badge.warning{background:var(--warn);color:#0b1220}
+.pulse{animation:pulse 1.2s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;padding:16px}
+.card{background:var(--panel-2);border:1px solid #1b2740;border-radius:8px;padding:12px}
+.card.wide{grid-column:span 12}
+.card{grid-column:span 4}
+.telemetry{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.telemetry div{display:flex;align-items:center;justify-content:space-between;background:#0b1424;padding:8px;border-radius:6px;border:1px solid #1b2740}
+.diagnosis{display:grid;grid-template-columns:repeat(1,1fr);gap:8px}
+.list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.list li{background:#0b1424;border:1px solid #1b2740;border-radius:6px;padding:8px}
+.list li.warning{border-color:var(--warn)}
+.list li.critical{border-color:var(--crit)}
+.sim{display:flex;gap:8px;align-items:center}
+.sim select,.sim button{background:#0b1424;border:1px solid #1b2740;border-radius:6px;color:var(--text);padding:8px}
+.sim button{cursor:pointer}
+.log{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;max-height:200px;overflow:auto}
+.muted{color:var(--muted)}
+.app-footer{margin-top:auto;padding:10px 16px;border-top:1px solid #1b2740;background:var(--panel);color:var(--muted);font-size:12px}
+@media (max-width: 900px){
+	.card{grid-column:span 12}
+	.telemetry{grid-template-columns:repeat(2,1fr)}
+}
