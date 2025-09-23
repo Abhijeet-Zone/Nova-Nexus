@@ -1,0 +1,117 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1416;
+  --panel: #0f1a1d;
+  --panel-border: #1f2937;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #3b82f6;
+  --danger: #f43f5e;
+  --success: #22c55e;
+  --warn: #f59e0b;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 20% -10%, #0d1620 0%, var(--bg) 60%), var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+}
+@media (max-width: 980px) {
+  .main-grid { grid-template-columns: 1fr; }
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.title {
+  font-size: 22px;
+  font-weight: 600;
+}
+.subtitle { color: var(--muted); font-size: 14px; }
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.kpi-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 12px;
+}
+.kpi-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.kpi-left { display: flex; align-items: center; gap: 10px; }
+.kpi-icon { padding: 8px; border-radius: 8px; background: #0d2330; display: inline-flex; align-items: center; justify-content: center; }
+.kpi-title { font-size: 13px; color: var(--text); }
+.kpi-sub { font-size: 12px; color: var(--muted); }
+.kpi-value { color: #fbbf24; font-weight: 600; }
+
+.progress-wrap { width: 100%; height: 8px; background: #0e1820; border-radius: 999px; overflow: hidden; }
+.progress {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff8a00, #ff4d00);
+}
+.kpi-note { margin-top: 6px; font-size: 12px; color: var(--muted); }
+
+/* Cards used by Dashboard.jsx are styled inside that file's exported styles; this keeps base here minimal */
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: 16px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reactor-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 12px;
+}
+.reactor-head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.reactor-title { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.reactor-icon { display: inline-flex; }
+.reactor-row { display: flex; align-items: center; justify-content: space-between; padding: 4px 0; color: var(--text); }
+.reactor-row span { color: var(--muted); }
+.reactor-desc { margin-top: 8px; color: #a7f3d0; font-size: 12px; }
+
+.status-pill { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.status-pill.ok { background: #10b98122; color: #10b981; border: 1px solid #10b98133; }
+.status-pill.bad { background: #ef444422; color: #ef4444; border: 1px solid #ef444433; }
+
+.toggle { width: 38px; height: 22px; border-radius: 999px; border: 1px solid #334155; position: relative; background: #0b1320; cursor: pointer; }
+.toggle.on { background: #f59e0b33; border-color: #f59e0b66; }
+.toggle .knob { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: #94a3b8; transition: transform .2s ease; }
+.toggle.on .knob { background: #f59e0b; transform: translateX(16px); }
+
+.main-content { min-width: 0; }
