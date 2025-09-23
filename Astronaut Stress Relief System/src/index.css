@@ -1,0 +1,76 @@
+/* Space starfield background */
+:root {
+  --space-bg: #06070a;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--space-bg);
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0) 60%),
+    radial-gradient(1px 1px at 80% 70%, rgba(255,255,255,0.7), rgba(255,255,255,0) 60%),
+    radial-gradient(1.5px 1.5px at 50% 50%, rgba(255,255,255,0.7), rgba(255,255,255,0) 60%),
+    radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.6), rgba(255,255,255,0) 60%),
+    radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,0.6), rgba(255,255,255,0) 60%);
+  background-repeat: repeat;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* subtle parallax twinkle using pseudo elements */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 25% 15%, rgba(255,255,255,0.7), rgba(255,255,255,0) 60%),
+    radial-gradient(1px 1px at 60% 40%, rgba(255,255,255,0.6), rgba(255,255,255,0) 60%),
+    radial-gradient(1px 1px at 30% 75%, rgba(255,255,255,0.6), rgba(255,255,255,0) 60%),
+    radial-gradient(1.5px 1.5px at 70% 85%, rgba(255,255,255,0.6), rgba(255,255,255,0) 60%);
+  pointer-events: none;
+  animation: drift 120s linear infinite;
+  opacity: 0.4;
+}
+
+body::after {
+  animation-duration: 180s;
+  opacity: 0.25;
+}
+
+/* Earth overlay layer */
+#root::before {
+  content: "";
+  position: fixed;
+  right: -10vw;
+  bottom: -10vh;
+  width: 55vw;
+  height: 55vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: url('/earth.svg') no-repeat center/contain;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes drift {
+  0% { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-200px, -200px, 0); }
+}
+
+/* Ensure cards remain readable on starfield */
+.card {
+  backdrop-filter: blur(2px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive grid fallback */
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
